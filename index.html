@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script type="text/javascript">
+        //通过ajax获得分页信息
+        function showpage(url){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4){
+                    //把获得服务器端的分页信息显示到id=result的div里边
+                    document.getElementById('result').innerHTML = xhr.responseText;
+                }
+            }
+            xhr.open('get',url);
+            xhr.send(null);
+        }
+        //页面加载完毕就获得一次分页信息
+        window.onload = function(){
+            showpage('./data.php?page=1');
+        }
+        </script>
+        <style type="text/css">
+        h2 {width:700px;margin:auto;text-align:center;}
+        </style>
+    </head>
+    <body>
+        <h2>Ajax无刷新分页效果</h2>
+        <div id="result"></div>
+    </body>
+</html>
+<script type="text/javascript">
+document.write(new Date()+"<br />");
+document.write(new Date()+"<br />");
+document.write(new Date()+"<br />");
+document.write(new Date()+"<br />");
+</script>
